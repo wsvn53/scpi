@@ -2,6 +2,8 @@
 
 📁 An interactive SCP (Secure Copy Protocol) tool with a beautiful terminal UI for easy file transfers between local and remote systems.
 
+![SCPI Demo](screenshots/scpi-demo.png)
+
 ## Features
 
 - 🎨 **Interactive Terminal UI** - Built with Textual and Rich for a modern CLI experience

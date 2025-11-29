@@ -73,7 +73,7 @@ options:
   -r, --recursive       Recursively copy entire directories
   -v, --verbose         Verbose mode
   -R, --interactive-right
-                        Interactive selection on right side (target) instead of left (source)
+                        Browse local directory (reverse default behavior of browsing remote)
 ```
 
 ## Examples
@@ -120,18 +120,18 @@ scpi -i ~/.ssh/id_rsa -r /local/backup/ user@example.com:1234:/remote/backup/
 
 ### Interactive selection side
 
-By default, the interactive file browser works on the **source** (left side):
-- **Download**: Browse remote files interactively
-- **Upload**: Browse local files interactively
+By default, the interactive file browser automatically opens on the **remote** (SSH) side:
+- **Download**: Browse remote files interactively to select what to download
+- **Upload**: Browse remote destination interactively to select where to upload
 
-Use `-R` to switch to **target** (right side):
+Use `-R` to switch to browsing the **local** directory:
 
 ```bash
-# Download: Browse local destination interactively
-scpi -R user@example.com:/remote/file.txt /local/
+# Upload: Browse local files interactively (select what to upload)
+scpi -R /local/path/ user@example.com:/remote/path/
 
-# Upload: Browse remote destination interactively
-scpi -R /local/file.txt user@example.com:/remote/path/
+# Download: Browse local destination interactively (select where to save)
+scpi -R user@example.com:/remote/path/ /local/path/
 ```
 
 ## Development

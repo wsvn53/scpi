@@ -1,4 +1,4 @@
-.PHONY: build clean install dev-install test lint format help
+.PHONY: build clean install dev-install test lint format help publish test-publish
 
 help:
 	@echo "📦 Available targets:"
@@ -9,6 +9,8 @@ help:
 	@echo "  test         - Run tests"
 	@echo "  lint         - Run linters"
 	@echo "  format       - Format code with black"
+	@echo "  publish      - Publish to PyPI"
+	@echo "  test-publish - Publish to TestPyPI"
 
 build: clean
 	@echo "🔨 Building wheel package..."
@@ -43,3 +45,13 @@ lint:
 format:
 	@echo "✨ Formatting code..."
 	black .
+
+publish: build
+	@echo "🚀 Publishing to PyPI..."
+	@if ! command -v twine >/dev/null 2>&1; then echo "❌ Twine is not installed. Run 'pip install twine'"; exit 1; fi
+	twine upload dist/*
+
+test-publish: build
+	@echo "🧪 Publishing to TestPyPI..."
+	@if ! command -v twine >/dev/null 2>&1; then echo "❌ Twine is not installed. Run 'pip install twine'"; exit 1; fi
+	twine upload --repository testpypi dist/*

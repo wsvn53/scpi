@@ -15,6 +15,14 @@
 
 ## Installation
 
+Install via pip (Recommended):
+
+```bash
+pip install scptui
+```
+
+Or install from source:
+
 ```bash
 # Clone the repository
 cd scptui
